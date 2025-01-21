@@ -10,4 +10,4 @@ A simple table column and free-text filter script. For *[reasons]* this was need
 4. Add the `filterable` class to any headers you want to filter
 5. If you want free-text filtering, add an input similar to `<input id="text-filter" type="text" class="filterable"
         data-table-id="id-of-your-table" data-col-ids="col1, col2">`
-  a. Make sure that each column that will be filterable has `data-col-id` set to an id (that is then used above)
+   1. Make sure that each column that will be filterable has `data-col-id` set to an id (that is then used above)
