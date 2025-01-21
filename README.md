@@ -4,8 +4,8 @@ A simple table column and free-text filter script. For *[reasons]* this was need
 
 ### Usage
 
-1. Include the css file: `<link rel="stylesheet" href="filtertable.css">`
-2. Import the JS module `import FilterTable from './filtertable.js'` (or whatever path)
+1. Copy the lib into `/filtertable` (this is the assumption for the css path etc)
+2. Import the JS module `import FilterTable from './filtertable/filtertable.js'` (or whatever relative path)
 3. Call `new FilterTable(document.getElementById('id-of-your-table'));`
 4. Add the `filterable` class to any headers you want to filter
 5. If you want free-text filtering, add an input similar to `<input id="text-filter" type="text" class="filterable"

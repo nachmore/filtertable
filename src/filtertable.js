@@ -2,6 +2,8 @@ export default class FilterTable {
 
   static SELECT_ALL = '(Select All)';
 
+  static initialized = false;
+
   table = null;
 
   // expect:
@@ -14,6 +16,9 @@ export default class FilterTable {
   filters = {};
 
   constructor(table) {
+
+    this.#init();
+
     this.table = table;
 
     table
@@ -24,6 +29,16 @@ export default class FilterTable {
     document
       .querySelectorAll(`input[data-table-id="${table.id}"]`)
       .forEach(txtbox => this.#createTextFilter(txtbox));
+  }
+
+  #init() {
+    if (FilterTable.initialized) return;
+
+    const cssLink = document.createElement('link');
+    cssLink.rel = 'stylesheet';
+    cssLink.href = 'filtertable/filtertable.css';
+
+    document.head.appendChild(cssLink);
   }
 
   #createTextFilter(txtbox) {
