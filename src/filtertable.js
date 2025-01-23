@@ -17,7 +17,9 @@ export default class FilterTable {
 
   constructor(table) {
 
-    this.#init();
+    if (!FilterTable.initialized) {
+      throw new Error('Must call FilterTable.init() before contructing instances of this class');
+    }
 
     this.table = table;
 
@@ -31,12 +33,21 @@ export default class FilterTable {
       .forEach(txtbox => this.#createTextFilter(txtbox));
   }
 
-  #init() {
+  static init(pathPrefix) {
     if (FilterTable.initialized) return;
+
+    FilterTable.initialized = true;
+
+    // inject filtertable css into the page
+    let path = 'filtertable/filtertable.css';
+
+    if (pathPrefix !== undefined) {
+      path = `${pathPrefix}/${path}`;
+    }
 
     const cssLink = document.createElement('link');
     cssLink.rel = 'stylesheet';
-    cssLink.href = 'filtertable/filtertable.css';
+    cssLink.href = path;
 
     document.head.appendChild(cssLink);
   }
